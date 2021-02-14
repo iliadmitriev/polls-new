@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-14 20:23+0300\n"
+"POT-Creation-Date: 2021-02-14 21:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,6 +31,38 @@ msgstr "Русский"
 #: polls/apps.py:7
 msgid "Polls"
 msgstr "Опросы"
+
+#: polls/models.py:6
+msgid "question text"
+msgstr "Текст вопроса"
+
+#: polls/models.py:7
+msgid "date published"
+msgstr "Дата публикации"
+
+#: polls/models.py:10
+msgid "Question"
+msgstr "Вопрос"
+
+#: polls/models.py:11
+msgid "Questions"
+msgstr "Вопросы"
+
+#: polls/models.py:16
+msgid "choice text"
+msgstr "Текст ответ"
+
+#: polls/models.py:17
+msgid "votes"
+msgstr "Голоса"
+
+#: polls/models.py:20
+msgid "Choice"
+msgstr "Ответ"
+
+#: polls/models.py:21
+msgid "Choices"
+msgstr "Ответы"
 
 #: polls/views.py:9
 msgid "hello world"
