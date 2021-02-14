@@ -8,6 +8,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from django.utils.translation import gettext_lazy as _
 from pathlib import Path
+from os import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,9 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '4u@_$1ipomx2)v-6kt!^pbuj#k%d+e5msc%&_h98m$w51q$hdy'  # noqa
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = environ.get('DJANGO_DEBUG', False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
