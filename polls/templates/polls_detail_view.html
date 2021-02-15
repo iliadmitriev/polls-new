@@ -8,13 +8,12 @@
 <body>
 <h1>{{ question.question_text }}</h1>
 <hr/>
-<form method="post">
+<form method="post" action="{% url 'polls-detail' question.id %}">
     {% csrf_token %}
     <div>
         {% for choice in question.choice_set.all %}
-            <input type="radio" name="choice" value="{{ choice.id }}">
-                {{ choice.choice_text }}
-            </input>
+            <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}">
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
         {% endfor %}
     </div>
     <input type="submit" value="{% translate 'Vote' %}">

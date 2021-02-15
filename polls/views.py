@@ -9,5 +9,4 @@ class PollsIndexView(ListView):
 
 class PollsDetailView(DetailView):
     model = Question
-    http_method_names = ['get', 'post']
     template_name = 'polls_detail_view.html'
