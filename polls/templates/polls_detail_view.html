@@ -8,7 +8,7 @@
 <body>
 <h1>{{ question.question_text }}</h1>
 <hr/>
-<form method="post" action="{% url 'polls-detail' question.id %}">
+<form method="post" action="{% url 'polls-vote' question.id %}">
     {% csrf_token %}
     <div>
         {% for choice in question.choice_set.all %}
