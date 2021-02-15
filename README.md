@@ -96,7 +96,7 @@ gunicorn --bind :8000 --workers 4 --threads 8 --timeout 0 mysite.wsgi
 ```
 
 
-# usefull links
+# useful links
 
 ---
 * admin http://127.0.0.1:8000/admin/
