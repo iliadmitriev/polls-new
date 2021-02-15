@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-14 21:47+0300\n"
+"POT-Creation-Date: 2021-02-15 16:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: mysite/settings.py:111
+#: mysite/settings.py:112
 msgid "English"
 msgstr "English"
 
-#: mysite/settings.py:112
+#: mysite/settings.py:113
 msgid "Russian"
 msgstr "Russian"
 
@@ -38,30 +38,33 @@ msgstr "Question text"
 msgid "date published"
 msgstr "Date published"
 
-#: polls/models.py:10
+#: polls/models.py:13
 msgid "Question"
 msgstr "Question"
 
-#: polls/models.py:11
+#: polls/models.py:14
 msgid "Questions"
 msgstr "Questions"
 
-#: polls/models.py:16
+#: polls/models.py:19
 msgid "choice text"
 msgstr "Choice text"
 
-#: polls/models.py:17
+#: polls/models.py:20
 msgid "votes"
 msgstr "Votes"
 
-#: polls/models.py:20
+#: polls/models.py:26
 msgid "Choice"
 msgstr "Choice"
 
-#: polls/models.py:21
+#: polls/models.py:27
 msgid "Choices"
 msgstr "Choices"
 
-#: polls/views.py:9
-msgid "hello world"
-msgstr "Hello World"
+#: polls/templates/polls_detail_view.html:22
+msgid "Polls Index"
+msgstr "Back to polls index"
+
+#~ msgid "hello world"
+#~ msgstr "Hello World"

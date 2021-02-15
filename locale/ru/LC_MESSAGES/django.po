@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-14 21:47+0300\n"
+"POT-Creation-Date: 2021-02-15 16:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: mysite/settings.py:111
+#: mysite/settings.py:112
 msgid "English"
 msgstr "Английский"
 
-#: mysite/settings.py:112
+#: mysite/settings.py:113
 msgid "Russian"
 msgstr "Русский"
 
@@ -40,30 +40,33 @@ msgstr "Текст вопроса"
 msgid "date published"
 msgstr "Дата публикации"
 
-#: polls/models.py:10
+#: polls/models.py:13
 msgid "Question"
 msgstr "Вопрос"
 
-#: polls/models.py:11
+#: polls/models.py:14
 msgid "Questions"
 msgstr "Вопросы"
 
-#: polls/models.py:16
+#: polls/models.py:19
 msgid "choice text"
 msgstr "Текст ответ"
 
-#: polls/models.py:17
+#: polls/models.py:20
 msgid "votes"
 msgstr "Голоса"
 
-#: polls/models.py:20
+#: polls/models.py:26
 msgid "Choice"
 msgstr "Ответ"
 
-#: polls/models.py:21
+#: polls/models.py:27
 msgid "Choices"
 msgstr "Ответы"
 
-#: polls/views.py:9
-msgid "hello world"
-msgstr "Привет мир"
+#: polls/templates/polls_detail_view.html:22
+msgid "Polls Index"
+msgstr "Назад к списку опросов"
+
+#~ msgid "hello world"
+#~ msgstr "Привет мир"
