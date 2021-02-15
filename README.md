@@ -38,7 +38,6 @@ python3 manage.py runserver 0:8000
 1. migrate
 ```shell
 python3 manage.py migrate --noinput
-
 ```
 
 2. collect static
