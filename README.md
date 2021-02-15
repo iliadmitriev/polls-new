@@ -23,11 +23,31 @@ python3 manage.py compilemessages
 ```shell
 python3 manage.py createsuperuser
 ```
-6. run
+
+# development
+
+---
+1. set environment variables
+```shell
+DJANGO_DEBUG=True
+```
+
+2. make migrations and migrate
+```shell
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+
+3. make messages
+```shell
+python3 manage.py makemessages -a
+python3 manage.py compilemessages
+```
+
+4. run
 ```shell
 python3 manage.py runserver 0:8000
 ```
-
 
 # production
 
