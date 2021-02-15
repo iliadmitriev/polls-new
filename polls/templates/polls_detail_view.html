@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,5 +19,6 @@
 </div>
 </form>
 
+<a href="{% url 'polls-index' %}">{% translate 'Polls Index' %}</a>
 </body>
 </html>
