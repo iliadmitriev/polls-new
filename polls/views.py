@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 from django.views.generic import View, DetailView
 from django.utils.translation import gettext as _
-from pprint import pprint, pformat
-from .models import Question, Choice
+from pprint import pformat
+from .models import Question
 
 
 class PollsIndexView(View):
