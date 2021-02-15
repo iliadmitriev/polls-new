@@ -16,12 +16,22 @@ class ContentTypeAdmin(admin.ModelAdmin):
     pass
 
 
+class ChoiceInline(admin.TabularInline):
+    model = Choice
+    fields = ['id', 'choice_text', 'votes']
+    readonly_fields = ['id']
+    extra = 1
+
+
 class QuestionAdmin(admin.ModelAdmin):
-    pass
+    inlines = [ChoiceInline]
+    list_display = ['id', 'question_text', 'pub_date']
 
 
 class ChoiceAdmin(admin.ModelAdmin):
-    pass
+    raw_id_fields = ['question']
+    list_display = ['id', 'question_id', 'choice_text', 'votes']
+    list_select_related = True
 
 
 class LogEntryAdmin(admin.ModelAdmin):
