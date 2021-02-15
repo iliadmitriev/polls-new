@@ -7,13 +7,16 @@
 <body>
 <h1>{{ question.question_text }}</h1>
 <hr/>
-<ul>
-    {% for choice in question.choise_set.all %}
-        <li>
+<form>
+{% csrf_token %}
+<div>
+    {% for choice in question.choice_set.all %}
+        <input type="radio" name="choice" value="{{ choice.id }}">
             {{ choice.choice_text }}
-        </li>
+        </input>
     {% endfor %}
-</ul>
+</div>
+</form>
 
 </body>
 </html>
