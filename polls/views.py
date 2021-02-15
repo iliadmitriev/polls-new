@@ -1,6 +1,6 @@
 from django.views.generic import DetailView, ListView, View
-from django.shortcuts import HttpResponseRedirect, reverse
-from .models import Question
+from django.shortcuts import HttpResponseRedirect, reverse, get_object_or_404
+from .models import Question, Choice
 
 
 class PollsIndexView(ListView):
@@ -20,5 +20,12 @@ class PollsResultView(DetailView):
 
 class PollsVoteView(View):
     def post(self, request, *args, **kwargs):
-        redirect = HttpResponseRedirect(reverse('polls-result', kwargs=kwargs))
-        return redirect
+        question = get_object_or_404(Question, pk=kwargs.get('pk'))
+        try:
+            choice_voted = question.choice_set.get(pk=request.POST['choice'])
+        except (KeyError, Choice.DoesNotExist):
+            return HttpResponseRedirect(reverse('polls-detail', kwargs=kwargs))
+        else:
+            choice_voted.votes += 1
+            choice_voted.save()
+            return HttpResponseRedirect(reverse('polls-result', kwargs=kwargs))
