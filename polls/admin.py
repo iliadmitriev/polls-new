@@ -20,18 +20,27 @@ class ChoiceInline(admin.TabularInline):
     model = Choice
     fields = ['id', 'choice_text', 'votes']
     readonly_fields = ['id']
-    extra = 1
+    extra = 0
 
 
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline]
+    fields = ['id', 'question_text', 'pub_date']
+    readonly_fields = ['id']
     list_display = ['id', 'question_text', 'pub_date']
+    search_fields = ['^question_text']
+    list_display_links = ['id', 'question_text']
+    list_filter = ['pub_date']
 
 
 class ChoiceAdmin(admin.ModelAdmin):
     raw_id_fields = ['question']
-    list_display = ['id', 'question_id', 'choice_text', 'votes']
+    list_display = ['id', 'question_text', 'choice_text', 'votes']
     list_select_related = True
+    list_filter = ['question__question_text']
+
+    def question_text(self, obj):
+        return obj.question.question_text
 
 
 class LogEntryAdmin(admin.ModelAdmin):
