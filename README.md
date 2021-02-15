@@ -1,5 +1,7 @@
 # install
 
+---
+
 1. install python3 and create virtual env
 ```shell
 python3 -m venv venv
@@ -24,4 +26,52 @@ python3 manage.py createsuperuser
 6. run
 ```shell
 python3 manage.py runserver 0:8000
+```
+
+
+# production
+
+---
+
+## prepare
+
+1. migrate
+```shell
+python3 manage.py migrate --noinput
+
+```
+
+2. collect static
+```shell
+python3 manage.py collectstatic --noinput
+```
+
+3. compile messages
+```shell
+python3 manage.py compilemessages
+```
+
+## Web server
+
+### uWSGI
+
+1. install uWSGI
+```shell
+pip install uWSGI
+```
+
+2. Run
+```shell
+uwsgi --ini uwsgi.ini
+```
+
+### gunicorn
+
+1. install
+```shell
+pip install gunicorn
+```
+2. run
+```shell
+gunicorn --bind :8000 --workers 4 --threads 8 --timeout 0 mysite.wsgi
 ```
