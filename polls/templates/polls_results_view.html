@@ -1,11 +1,10 @@
+{% extends 'base.html' %}
+
 {% load i18n %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ question.question_text }}</title>
-</head>
-<body>
+
+{% block title %}{{ question.question_text }}{% endblock %}
+
+{% block content %}
 <h1>{{ question.question_text }}</h1>
 <hr/>
 <ul>
@@ -14,5 +13,4 @@
     {% endfor %}
 </ul>
 <a href="{% url 'polls-index' %}">{% translate 'Polls Index' %}</a>
-</body>
-</html>
+{% endblock %}

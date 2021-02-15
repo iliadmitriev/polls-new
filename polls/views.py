@@ -1,5 +1,5 @@
 from django.views.generic import DetailView, ListView, View
-from django.shortcuts import HttpResponseRedirect, reverse, get_object_or_404
+from django.shortcuts import HttpResponseRedirect, reverse, get_object_or_404, HttpResponse
 from .models import Question, Choice
 
 

@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-{% for q in question_list %}
-<a href="{% url 'polls-detail' q.id %}">
-{{ q.question_text }}
-</a>
-{% endfor %}
+{% load i18n %}
 
-</body>
-</html>
+{% block title %}{% translate 'Polls Index Title' %}{% endblock %}
+
+{% block content %}
+    <h1>{% translate 'Polls Index Title' %}</h1>
+    <hr>
+    {% for question in question_list %}
+        <a href="{% url 'polls-detail' question.id %}">
+            {{ question.question_text }}
+        </a>
+    {% empty %}
+    {% endfor %}
+{% endblock %}

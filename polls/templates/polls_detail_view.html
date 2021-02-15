@@ -1,24 +1,22 @@
-{% load i18n %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ question.question_text }}</title>
-</head>
-<body>
-<h1>{{ question.question_text }}</h1>
-<hr/>
-<form method="post" action="{% url 'polls-vote' question.id %}">
-    {% csrf_token %}
-    <div>
-        {% for choice in question.choice_set.all %}
-            <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}">
-            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
-        {% endfor %}
-    </div>
-    <input type="submit" value="{% translate 'Vote' %}">
-</form>
+{% extends 'base.html' %}
 
-<a href="{% url 'polls-index' %}">{% translate 'Polls Index' %}</a>
-</body>
-</html>
+{% load i18n %}
+
+{% block title %}{{ question.question_text }}{% endblock %}
+
+{% block content %}
+    <h1>{{ question.question_text }}</h1>
+    <hr/>
+    <form method="post" action="{% url 'polls-vote' question.id %}">
+        {% csrf_token %}
+        {% for choice in question.choice_set.all %}
+            <div style="display: block">
+                <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}">
+                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+            </div>
+        {% endfor %}
+        <input type="submit" value="{% translate 'Vote' %}">
+    </form>
+
+    <a href="{% url 'polls-index' %}">{% translate 'Polls Index' %}</a>
+{% endblock %}

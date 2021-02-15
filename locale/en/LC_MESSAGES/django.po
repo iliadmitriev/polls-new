@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-15 17:58+0300\n"
+"POT-Creation-Date: 2021-02-15 18:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,14 +62,19 @@ msgstr "Choice"
 msgid "Choices"
 msgstr "Choices"
 
-#: polls/templates/polls_detail_view.html:19
+#: polls/templates/polls_detail_view.html:20
 msgid "Vote"
 msgstr "Vote"
 
-#: polls/templates/polls_detail_view.html:22
+#: polls/templates/polls_detail_view.html:23
 #: polls/templates/polls_results_view.html:16
 msgid "Polls Index"
 msgstr "Back to polls index"
+
+#: polls/templates/polls_index_view.html:6
+#: polls/templates/polls_index_view.html:10
+msgid "Polls Index Title"
+msgstr "Recent polls list"
 
 #~ msgid "hello world"
 #~ msgstr "Hello World"
