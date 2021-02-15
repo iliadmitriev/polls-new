@@ -74,3 +74,11 @@ pip install gunicorn
 ```shell
 gunicorn --bind :8000 --workers 4 --threads 8 --timeout 0 mysite.wsgi
 ```
+
+
+# usefull links
+
+---
+* admin http://127.0.0.1:8000/admin/
+* polls http://127.0.0.1:8000/polls/
+* api http://127.0.0.1:8000/api/
