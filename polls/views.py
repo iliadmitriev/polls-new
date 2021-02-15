@@ -1,7 +1,4 @@
-from django.http import HttpResponse
-from django.views.generic import View, DetailView, ListView
-from django.utils.translation import gettext as _
-from pprint import pformat
+from django.views.generic import DetailView, ListView
 from .models import Question
 
 
@@ -12,4 +9,5 @@ class PollsIndexView(ListView):
 
 class PollsDetailView(DetailView):
     model = Question
+    http_method_names = ['get', 'post']
     template_name = 'polls_detail_view.html'
