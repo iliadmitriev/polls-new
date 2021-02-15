@@ -16,10 +16,6 @@ class ContentTypeAdmin(admin.ModelAdmin):
     pass
 
 
-class MigrationAdmin(admin.ModelAdmin):
-    pass
-
-
 class QuestionAdmin(admin.ModelAdmin):
     pass
 
