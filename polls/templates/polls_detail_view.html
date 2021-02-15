@@ -8,15 +8,16 @@
 <body>
 <h1>{{ question.question_text }}</h1>
 <hr/>
-<form>
-{% csrf_token %}
-<div>
-    {% for choice in question.choice_set.all %}
-        <input type="radio" name="choice" value="{{ choice.id }}">
-            {{ choice.choice_text }}
-        </input>
-    {% endfor %}
-</div>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        {% for choice in question.choice_set.all %}
+            <input type="radio" name="choice" value="{{ choice.id }}">
+                {{ choice.choice_text }}
+            </input>
+        {% endfor %}
+    </div>
+    <input type="submit" value="{% translate 'Vote' %}">
 </form>
 
 <a href="{% url 'polls-index' %}">{% translate 'Polls Index' %}</a>
