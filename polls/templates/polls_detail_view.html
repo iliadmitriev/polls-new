@@ -14,6 +14,8 @@
                 <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}">
                 <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
             </div>
+        {% empty %}
+            <p>{% translate 'There is no choices for this poll' %}</p>
         {% endfor %}
         <input type="submit" value="{% translate 'Vote' %}">
     </form>

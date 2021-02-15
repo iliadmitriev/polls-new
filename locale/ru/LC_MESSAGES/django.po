@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-15 18:43+0300\n"
+"POT-Creation-Date: 2021-02-15 19:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,19 +64,27 @@ msgstr "Ответ"
 msgid "Choices"
 msgstr "Ответы"
 
+#: polls/templates/polls_detail_view.html:18
+msgid "There is no choices for this poll"
+msgstr "Нет вариантов ответа на этот опрос"
+
 #: polls/templates/polls_detail_view.html:20
 msgid "Vote"
 msgstr "Проголосовать"
 
 #: polls/templates/polls_detail_view.html:23
-#: polls/templates/polls_results_view.html:16
+#: polls/templates/polls_results_view.html:15
 msgid "Polls Index"
 msgstr "Назад к списку опросов"
 
-#: polls/templates/polls_index_view.html:6
-#: polls/templates/polls_index_view.html:10
+#: polls/templates/polls_index_view.html:5
+#: polls/templates/polls_index_view.html:8
 msgid "Polls Index Title"
 msgstr "Список текущих опросов"
+
+#: polls/templates/polls_index_view.html:18
+msgid "There is no polls yet"
+msgstr "Нет текущих опросов"
 
 #~ msgid "hello world"
 #~ msgstr "Привет мир"
