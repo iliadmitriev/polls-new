@@ -1,17 +1,13 @@
 from django.http import HttpResponse
-from django.views.generic import View, DetailView
+from django.views.generic import View, DetailView, ListView
 from django.utils.translation import gettext as _
 from pprint import pformat
 from .models import Question
 
 
-class PollsIndexView(View):
-    def get(self, *args, **kwargs):
-        request = self.request
-        output = _('hello world') + '\n%s' % pformat(request.__dict__)
-
-        response = HttpResponse(output, content_type='text/plain; charset=utf-8')
-        return response
+class PollsIndexView(ListView):
+    queryset = Question.objects.order_by('-pub_date')[:5]
+    template_name = 'polls_index_view.html'
 
 
 class PollsDetailView(DetailView):
