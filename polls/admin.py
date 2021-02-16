@@ -27,7 +27,7 @@ class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline]
     fields = ['id', 'question_text', 'pub_date']
     readonly_fields = ['id']
-    list_display = ['id', 'question_text', 'pub_date']
+    list_display = ['id', 'question_text', 'pub_date', 'was_published_recently']
     search_fields = ['^question_text']
     list_display_links = ['id', 'question_text']
     list_filter = ['pub_date']
