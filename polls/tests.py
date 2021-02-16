@@ -1,16 +1,15 @@
+import datetime as dt
+from importlib import import_module
+import json
+
 from django.test import TestCase
 from django.utils import timezone
-import datetime as dt
 
 from .models import Question, Choice
-from .admin import ChoiceAdmin
+from .admin import ChoiceAdmin, SessionAdmin
 from django.contrib.admin.sites import AdminSite
-
 from django.conf import settings
-from importlib import import_module
 from django.contrib.sessions.models import Session as SessionModel
-from .admin import SessionAdmin
-import json
 from django.utils.safestring import mark_safe
 
 
