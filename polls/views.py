@@ -1,10 +1,16 @@
 from django.views.generic import DetailView, ListView, View
+import datetime as dt
+from django.utils import timezone
 from django.shortcuts import HttpResponseRedirect, reverse, get_object_or_404, HttpResponse
 from .models import Question, Choice
 
 
 class PollsIndexView(ListView):
-    queryset = Question.objects.order_by('-pub_date')[:5]
+    queryset = Question.objects \
+                   .filter(
+                        pub_date__lte=timezone.now(),
+                        pub_date__gte=timezone.now() - dt.timedelta(days=10)) \
+                   .order_by('-pub_date')[:5]
     template_name = 'polls_index_view.html'
 
 
