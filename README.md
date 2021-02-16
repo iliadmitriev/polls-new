@@ -53,13 +53,17 @@ python3 manage.py runserver 0:8000
 
 ## run tests 
 
-1. run
+1. run all tests
 ```shell
 python3 manage.py test
 ```
 2. run with keeping db in case of test fails
 ```shell
 python3 manage.py test --keepdb
+```
+3. run all tests with details
+```shell
+python3 manage.py test --verbosity=2
 ```
 
 ## run tests with coverage
