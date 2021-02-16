@@ -4,14 +4,34 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 import datetime as dt
 from .models import Question, Choice
+import random
+
+
+def _create_question(question_text, pub_date):
+    return Question.objects.create(question_text=question_text, pub_date=pub_date)
+
+
+def _create_choice(question, choice_text):
+    return Choice.objects.create(question=question, choice_text=choice_text)
+
+
+def _create_question_with_choices():
+    q = _create_question(
+        question_text='Test question',
+        pub_date=timezone.now() - dt.timedelta(seconds=1)
+    )
+    choices = []
+    for i in range(3):
+        choices.append(
+            _create_choice(
+                question=q,
+                choice_text='choice %s' % i
+            )
+        )
+    return {'question': q, 'choices': choices}
 
 
 class PollsIndexViewTest(TestCase):
-    questions = []
-
-    def _create_question(self, question_text, pub_date):
-        question = Question.objects.create(question_text=question_text, pub_date=pub_date)
-        self.questions.append(question)
 
     def setUp(self):
         self.client = Client(HTTP_ACCEPT_LANGUAGE='ru')
@@ -27,7 +47,7 @@ class PollsIndexViewTest(TestCase):
         self.assertQuerysetEqual(response.context['question_list'], [])
 
     def test_future_question_index_page_200_OK(self):
-        self._create_question(
+        _create_question(
             question_text='Future question',
             pub_date=timezone.now() + dt.timedelta(days=30)
         )
@@ -36,7 +56,7 @@ class PollsIndexViewTest(TestCase):
         self.assertQuerysetEqual(response.context['question_list'], [])
 
     def test_past_question_index_page_200_OK(self):
-        self._create_question(
+        _create_question(
             question_text='Past question',
             pub_date=timezone.now() - dt.timedelta(days=30)
         )
@@ -45,7 +65,7 @@ class PollsIndexViewTest(TestCase):
         self.assertQuerysetEqual(response.context['question_list'], [])
 
     def test_current_question_index_page_200_OK(self):
-        self._create_question(
+        _create_question(
             question_text='Test question',
             pub_date=timezone.now() - dt.timedelta(seconds=1)
         )
@@ -63,17 +83,11 @@ class PollsIndexViewTest(TestCase):
 
 class PollsDetailViewTest(TestCase):
 
-    def _create_question(self, question_text, pub_date):
-        return Question.objects.create(question_text=question_text, pub_date=pub_date)
-
-    def _create_choice(self, question, choice_text):
-        return Choice.objects.create(question=question, choice_text=choice_text)
-
     def setUp(self):
         self.client = Client(HTTP_ACCEPT_LANGUAGE='ru')
 
     def test_question_detail_view_200_OK(self):
-        q = self._create_question(
+        q = _create_question(
             question_text='Test question',
             pub_date=timezone.now() - dt.timedelta(seconds=1)
         )
@@ -81,7 +95,7 @@ class PollsDetailViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_non_existent_question_detail_view_404_not_found(self):
-        q = self._create_question(
+        q = _create_question(
             question_text='Test question',
             pub_date=timezone.now() - dt.timedelta(seconds=1)
         )
@@ -89,17 +103,51 @@ class PollsDetailViewTest(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_question_detail_view_choices(self):
-        q = self._create_question(
-            question_text='Test question',
-            pub_date=timezone.now() - dt.timedelta(seconds=1)
-        )
-        for i in range(3):
-            c = self._create_choice(
-                question=q,
-                choice_text='choice %s' % i
-            )
-        response = self.client.get(reverse('polls-detail', args=(q.id,)))
+        question = _create_question_with_choices()
+        response = self.client.get(reverse('polls-detail', args=(question['question'].id,)))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['question'].choice_set.all()), 3)
 
 
+class PollsVoteViewTest(TestCase):
+
+    def setUp(self) -> None:
+        self.client = Client(HTTP_ACCEPT_LANGUAGE='ru')
+
+    def test_polls_vote_view_post_redirect_back(self):
+        question = _create_question_with_choices()
+        question_id = question['question'].id
+        response = self.client.post(
+            reverse('polls-vote', args=(question_id,)),
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            response.url,
+            reverse('polls-detail', args=(question_id,))
+        )
+        self.assertNotEqual(
+            response.url,
+            reverse('polls-result', args=(question_id,))
+        )
+
+    def test_polls_vote_view_post_redirect_result(self):
+        question = _create_question_with_choices()
+        question_id = question['question'].id
+        choices = question['choices']
+        random_choice = random.choice(choices)
+        votes = random_choice.votes
+        response = self.client.post(
+            reverse('polls-vote', args=(question_id,)),
+            {'choice': random_choice.id}
+        )
+        random_choice.refresh_from_db()
+        self.assertEqual(response.status_code, 302)
+        self.assertNotEqual(
+            response.url,
+            reverse('polls-detail', args=(question_id,))
+        )
+        self.assertEqual(
+            response.url,
+            reverse('polls-result', args=(question_id,))
+        )
+        self.assertEqual(votes + 1, random_choice.votes)
