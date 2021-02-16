@@ -10,14 +10,14 @@
     <form method="post" action="{% url 'polls-vote' question.id %}">
         {% csrf_token %}
         {% for choice in question.choice_set.all %}
-            <div style="display: block">
-                <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}">
-                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}">
+                <label class="form-check-label" for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
             </div>
         {% empty %}
             <p>{% translate 'There is no choices for this poll' %}</p>
         {% endfor %}
-        <input type="submit" value="{% translate 'Vote' %}">
+        <input class="btn btn-primary" type="submit" value="{% translate 'Vote' %}">
     </form>
 
     <a href="{% url 'polls-index' %}">{% translate 'Polls Index' %}</a>

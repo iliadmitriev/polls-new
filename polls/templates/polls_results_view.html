@@ -7,9 +7,9 @@
 {% block content %}
 <h1>{{ question.question_text }}</h1>
 <hr/>
-<ul>
+<ul class="list-group">
     {% for choice in question.choice_set.all %}
-        <li>{{ choice.choice_text }}: {{ choice.votes }}</li>
+        <li class="list-group-item">{{ choice.choice_text }}: {{ choice.votes }}</li>
     {% endfor %}
 </ul>
 <a href="{% url 'polls-index' %}">{% translate 'Polls Index' %}</a>
