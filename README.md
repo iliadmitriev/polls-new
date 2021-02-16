@@ -49,6 +49,40 @@ python3 manage.py compilemessages
 python3 manage.py runserver 0:8000
 ```
 
+# testing
+
+## run tests 
+
+1. run
+```shell
+python3 manage.py test
+```
+2. run with keeping db in case of test fails
+```shell
+python3 manage.py test --keepdb
+```
+
+## run tests with coverage
+
+1. install coverage
+```shell
+pip install coverage
+```
+2. run with coverage
+```shell
+coverage run --source='.' manage.py test
+```
+3. print report with missing lines
+```shell
+coverage report -m
+```
+4. generate detailed html report
+```shell
+coverage html
+open htmlcov/index.html
+```
+
+
 # production
 
 ---
