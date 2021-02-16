@@ -33,7 +33,7 @@ class QuestionModelTests(TestCase):
                           'for a pub_date in 30 days past')
 
     def test_was_published_recently_with_23_hours_question(self):
-        time = timezone.now() - dt.timedelta(hours=23)
+        time = timezone.now() - dt.timedelta(hours=23, minutes=59)
         future_question = Question(pub_date=time)
         self.assertIs(future_question.was_published_recently(), True,
                       msg='This test is testing '
