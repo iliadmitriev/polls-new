@@ -86,6 +86,13 @@ coverage html
 open htmlcov/index.html
 ```
 
+## tests parallel running for macOS
+
+for macOS in order to tests work parallel you should use different settings file
+```shell
+python3 manage.py test --verbosity=2 --parallel --settings=mysite.settings-test-macos
+```
+
 
 # production
 
