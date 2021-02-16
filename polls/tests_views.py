@@ -121,8 +121,8 @@ class PollsVoteViewTest(TestCase):
             reverse('polls-vote', args=(question_id,)),
         )
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(
-            response.url,
+        self.assertRedirects(
+            response,
             reverse('polls-detail', args=(question_id,))
         )
         self.assertNotEqual(
@@ -146,8 +146,8 @@ class PollsVoteViewTest(TestCase):
             response.url,
             reverse('polls-detail', args=(question_id,))
         )
-        self.assertEqual(
-            response.url,
+        self.assertRedirects(
+            response,
             reverse('polls-result', args=(question_id,))
         )
         self.assertEqual(votes + 1, random_choice.votes)
