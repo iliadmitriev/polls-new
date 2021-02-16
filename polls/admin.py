@@ -50,7 +50,7 @@ class LogEntryAdmin(admin.ModelAdmin):
 class SessionAdmin(admin.ModelAdmin):
     def _session_data(self, obj):
         s = obj.get_decoded()
-        return mark_safe(u'<pre>%s' % (json.dumps(s, indent=4)))
+        return mark_safe(u'<pre>%s</pre>' % (json.dumps(s, indent=4)))
 
     list_display = ['session_key', 'expire_date']
     readonly_fields = ['_session_data']
