@@ -1,3 +1,5 @@
+import datetime
+from django.utils import timezone
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -8,6 +10,13 @@ class Question(models.Model):
 
     def __str__(self):
         return '%s: %s' % (self.id, self.question_text)
+
+    def was_published_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
+    was_published_recently.admin_order_field = 'pub_date'
+    was_published_recently.boolean = True
+    was_published_recently.short_description = _('Published recently?')
 
     class Meta:
         verbose_name = _('Question')

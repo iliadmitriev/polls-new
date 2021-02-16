@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-15 19:02+0300\n"
+"POT-Creation-Date: 2021-02-16 09:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,47 +32,51 @@ msgstr "Русский"
 msgid "Polls"
 msgstr "Опросы"
 
-#: polls/models.py:6
+#: polls/models.py:8
 msgid "question text"
 msgstr "Текст вопроса"
 
-#: polls/models.py:7
+#: polls/models.py:9
 msgid "date published"
 msgstr "Дата публикации"
 
-#: polls/models.py:13
+#: polls/models.py:19
+msgid "Published recently?"
+msgstr "Недавно опубликован?"
+
+#: polls/models.py:22
 msgid "Question"
 msgstr "Вопрос"
 
-#: polls/models.py:14
+#: polls/models.py:23
 msgid "Questions"
 msgstr "Вопросы"
 
-#: polls/models.py:19
+#: polls/models.py:28
 msgid "choice text"
 msgstr "Текст ответ"
 
-#: polls/models.py:20
+#: polls/models.py:29
 msgid "votes"
 msgstr "Голоса"
 
-#: polls/models.py:26
+#: polls/models.py:35
 msgid "Choice"
 msgstr "Ответ"
 
-#: polls/models.py:27
+#: polls/models.py:36
 msgid "Choices"
 msgstr "Ответы"
 
-#: polls/templates/polls_detail_view.html:18
+#: polls/templates/polls_detail_view.html:20
 msgid "There is no choices for this poll"
 msgstr "Нет вариантов ответа на этот опрос"
 
-#: polls/templates/polls_detail_view.html:20
+#: polls/templates/polls_detail_view.html:24
 msgid "Vote"
 msgstr "Проголосовать"
 
-#: polls/templates/polls_detail_view.html:23
+#: polls/templates/polls_detail_view.html:28
 #: polls/templates/polls_results_view.html:15
 msgid "Polls Index"
 msgstr "Назад к списку опросов"
