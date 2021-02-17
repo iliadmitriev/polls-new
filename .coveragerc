@@ -1,3 +1,6 @@
 [run]
 source = .
-omit = mysite/*, manage.py 
+branch = True
+omit = 
+	mysite/*
+	manage.py 
