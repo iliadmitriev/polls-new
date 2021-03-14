@@ -7,7 +7,7 @@
 {% block content %}
     <h1>{% translate 'Polls Index Title' %}</h1>
     <hr>
-    <ul class="list-group list-group-flush">
+    <ul class="list-group">
         {% for question in question_list %}
             <li class="list-group-item">
                 <a href="{% url 'polls-detail' question.id %}">
