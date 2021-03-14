@@ -9,7 +9,12 @@
 <hr/>
 <ul class="list-group">
     {% for choice in question.choice_set.all %}
-        <li class="list-group-item">{{ choice.choice_text }}: {{ choice.votes }}</li>
+        <li class="list-group-item">
+            {{ choice.choice_text }}
+            <span class="badge bg-primary rounded-pill">
+                {{ choice.votes }}
+            </span>
+        </li>
     {% endfor %}
 </ul>
 <a href="{% url 'polls-index' %}">{% translate 'Polls Index' %}</a>
