@@ -27,7 +27,10 @@ class PollsResultView(DetailView):
 class PollsVoteView(View):
     def post(self, request, *args, **kwargs):
         question = get_object_or_404(Question, pk=kwargs.get('pk'))
+        ABC = None
         try:
+            if (ABC):
+                print("None")
             choice_voted = question.choice_set.get(pk=request.POST['choice'])
         except (KeyError, Choice.DoesNotExist):
             return HttpResponseRedirect(reverse('polls-detail', kwargs=kwargs))
