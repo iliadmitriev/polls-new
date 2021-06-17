@@ -3,4 +3,5 @@ source = .
 branch = True
 omit = 
 	mysite/*
-	manage.py 
+	manage.py
+	venv/* 
